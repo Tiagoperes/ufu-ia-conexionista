@@ -1,0 +1,21 @@
+body {
+  margin: 0;
+  padding: 0;
+  background-color: black;
+}
+
+.food-list {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.food-list li {
+  position: absolute;
+  margin-left: 5px;
+  margin-top: 5px;
+  width: 10px;
+  height: 10px;
+  background-color: #FFF;
+  border-radius: 50%;
+}
