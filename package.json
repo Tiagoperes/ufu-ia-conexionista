@@ -1,0 +1,23 @@
+{
+  "name": "ia-conexionista",
+  "version": "1.0.0",
+  "description": "trabalho de classe",
+  "main": "index.html",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Tiagoperes/ufu-ia-conexionista.git"
+  },
+  "author": "Tiago Peres França",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Tiagoperes/ufu-ia-conexionista/issues"
+  },
+  "homepage": "https://github.com/Tiagoperes/ufu-ia-conexionista#readme",
+  "dependencies": {
+    "http-server": "^0.9.0",
+    "jasmine": "^2.4.1"
+  }
+}

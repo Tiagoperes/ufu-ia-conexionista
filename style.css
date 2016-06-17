@@ -8,14 +8,26 @@ body {
   position: absolute;
   top: 0;
   left: 0;
+  margin: 0;
+  padding: 0;
+  list-style: none;
 }
 
 .food-list li {
   position: absolute;
-  margin-left: 5px;
-  margin-top: 5px;
+  margin-left: -5px;
+  margin-top: -5px;
   width: 10px;
   height: 10px;
-  background-color: #FFF;
+  background-color: #3f6e00;
   border-radius: 50%;
+}
+
+.agent {
+  position: absolute;
+  margin-left: -5px;
+  margin-top: -5px;
+  width: 10px;
+  height: 10px;
+  z-index: 2;
 }
