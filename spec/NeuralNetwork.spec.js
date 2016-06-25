@@ -1,6 +1,6 @@
 (function () {
 
-  var NN = require('../NeuralNetwork.js');
+  var NN = require('../genetic-network/NeuralNetwork.js');
 
   var simpleNetworkLinks = [
     [null, null, 1, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null],

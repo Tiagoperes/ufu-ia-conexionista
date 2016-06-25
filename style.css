@@ -31,3 +31,59 @@ body {
   height: 10px;
   z-index: 2;
 }
+
+.agent:before {
+  content: '';
+  position: absolute;
+  width: 0;
+  height: 0;
+  border: 5px solid transparent;
+}
+
+.agent.direction-0:before,
+.agent.direction-45:before,
+.agent.direction-135:before,
+.agent.direction-225:before,
+.agent.direction-315:before {
+  border-left-color: black;
+  border-right: none;
+  top: 0;
+  left: 10px;
+}
+
+.agent.direction-45 {
+  transform: rotate(-45deg);
+}
+
+.agent.direction-135 {
+  transform: rotate(-135deg);
+}
+
+.agent.direction-225 {
+  transform: rotate(-225deg);
+}
+
+.agent.direction-315 {
+  transform: rotate(-315deg);
+}
+
+.agent.direction-90:before {
+  border-bottom-color: black;
+  border-top: none;
+  top: -5px;
+  left: 0;
+}
+
+.agent.direction-180:before {
+  border-right-color: black;
+  border-left: none;
+  top: 0;
+  left: -5px;
+}
+
+.agent.direction-270:before {
+  border-top-color: black;
+  border-bottom: none;
+  top: 10px;
+  left: 0;
+}
