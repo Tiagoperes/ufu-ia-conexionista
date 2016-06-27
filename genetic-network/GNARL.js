@@ -10,8 +10,7 @@
           LINKS_TO_ADD = {min: 1, max: 5};
 
     var population = [],
-        generation = 1,
-        best = 0;
+        generation = 1;
 
     function initialize() {
       randomizePopulation();
@@ -115,25 +114,14 @@
       return offspring;
     }
 
-    function removeIgnorantBastards() {
-      population = _.filter(population, function (net) {
-        return net.evaluation !== 0;
-      });
-    }
-
     this.nextGeneration = function () {
       var parents, offspring;
 
       _.forEach(population, function (net) {
         var evaluation = evaluate(net);
-        if (evaluation > best) {
-          best = evaluation;
-          console.log('---------------------------------------------> new best: ' + best * maxEvaluation);
-        }
         if (!net.evaluation || net.evaluation < evaluation) net.evaluation = evaluation;
       });
 
-      //removeIgnorantBastards();
       parents = selectParents();
       offspring = generateOffspring(parents);
       population = offspring;

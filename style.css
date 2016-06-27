@@ -87,3 +87,82 @@ body {
   top: 10px;
   left: 0;
 }
+
+.generation-panel {
+  border: 1px solid #ccc;
+  background-color: #FFF;
+  padding: 4px 12px;
+  color: #333333;
+  font-size: 14px;
+  font-family: arial;
+  box-shadow: 1px 1px 3px 0 rgba(0,0,0,0.2);
+  border-radius: 10px;
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  font-weight: bold;
+  opacity: 0.5;
+}
+
+.generation-panel:hover {
+  opacity: 1;
+}
+
+.controls {
+  font-size: 0;
+  box-shadow: 1px 1px 3px 0 rgba(0,0,0,0.2);
+  border-radius: 10px;
+  overflow: hidden;
+  opacity: 0.5;
+}
+
+.controls:hover {
+  opacity: 1;
+}
+
+.controls button {
+  border: 1px solid #ccc;
+  background-color: #FFF;
+  padding: 4px 8px;
+  color: #333333;
+  font-size: 14px;
+  margin: 0;
+  outline: none;
+  cursor: pointer;
+}
+
+.controls button:disabled {
+  color: #9d9d9d;
+  cursor: not-allowed;
+}
+
+.ctrl-animation {
+  position: fixed;
+  right: 160px;
+  bottom: 20px;
+}
+
+.ctrl-evolution {
+  position: fixed;
+  right: 90px;
+  bottom: 20px;
+}
+
+.ctrl-export-import {
+  position: fixed;
+  right: 20px;
+  bottom: 20px;
+}
+
+.ctrl-export-import .import {
+  position: relative;
+}
+
+.ctrl-export-import .import input {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  opacity: 0;
+}

@@ -131,7 +131,8 @@
     function getActionFromNeuralNetwork() {
       var closestFood = getClosestFood();
       var distance = getRelativeDistanceToPoint(closestFood);
-      var answer = network.run([isNextPositionAccessible() ? 1 : -1, distance.vertical, distance.horizontal]);
+      var nextPositionBlocked = Number(!isNextPositionAccessible());
+      var answer = network.run([nextPositionBlocked, distance.vertical, distance.horizontal]);
       return _.indexOf(answer, _.max(answer));
     }
 

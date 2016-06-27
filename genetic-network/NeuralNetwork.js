@@ -3,12 +3,12 @@
 
   function NeuralNetwork(numberOfNeuronsInHiddenLayer, links) {
     var numberOfNeuronsInInputLayer = 3,
-        numberOfNeuronsInOutputLayer = 4,
-        maximumNumberOfNeuronsInHiddenLayer = 30,
+        numberOfNeuronsInOutputLayer = 3,
+        maximumNumberOfNeuronsInHiddenLayer = 20,
         maximumNumberOfNeurons = numberOfNeuronsInInputLayer + numberOfNeuronsInOutputLayer + maximumNumberOfNeuronsInHiddenLayer,
         inputNodes = [0, 1, 2],
         hiddenNodes = [],
-        outputNodes = [33, 34, 35, 36],
+        outputNodes = [23, 24, 25],
         neuronList;
 
     function initialize() {
@@ -39,18 +39,15 @@
       var i = 0;
       while (i < numberOfLinks) {
         let from = _.sample(_.union(inputNodes, hiddenNodes));
-        //let to = _.sample(_.union(hiddenNodes, outputNodes));
         let to = _.sample(_.filter(_.union(hiddenNodes, outputNodes), _.partial(_.gt, _, from)));
-        //if (!dependsOn(from, to)) {
-          links[from][to] = _.random(-1, 1, true);
-          i++;
-        //}
+        links[from][to] = _.random(-1, 1, true);
+        i++;
       }
     }
 
-    function sigmoid(x) {
-      return 1 / (1 + Math.pow(Math.E, -x));
-      //return x < 0 ? 0 : 1;
+    function activation(x) {
+      //return 1 / (1 + Math.pow(Math.E, -x));
+      return x;
     }
 
     function getIncomingNeuronsIds(neuronId) {
@@ -88,7 +85,7 @@
         sum += signal;
         activationSignalsReceived++;
         if (self.isSumComplete()) {
-          self.output = sigmoid(sum);
+          self.output = activation(sum);
         }
       };
 
@@ -143,22 +140,6 @@
       return eligibleLinks;
     }
 
-    function dependsOn(nodeA, nodeB) {
-      var incoming;
-      if (nodeA === nodeB || links[nodeB][nodeA] !== null) return true;
-      incoming = getIncomingNeuronsIds(nodeB);
-      if (_.includes(incoming, undefined)) {
-        debugger;
-        getIncomingNeuronsIds(nodeB);
-      }
-      for(let i = 0; i < incoming.length; i++) {
-        if (dependsOn(nodeA, incoming[i])) {
-          return true;
-        }
-      }
-      return false;
-    }
-
     this.updateWeights = function (updateFunction) {
       var neuronIds = _.union(inputNodes, hiddenNodes);
       _.forEach(neuronIds, function (id) {
@@ -207,11 +188,7 @@
           toGroup = toClass === 'hidden' ? hiddenNodes : outputNodes,
           from = _.sample(fromGroup),
           to = _.sample(_.filter(toGroup, _.partial(_.gt, _, from)));
-          //to = _.sample(toGroup);
-
-      //if (!dependsOn(from, to)) {
-        links[from][to] = 0;
-      //}
+          links[from][to] = 0;
     };
 
     this.run = function (inputToNetwork) {

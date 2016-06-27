@@ -4,10 +4,27 @@
     <meta charset="UTF-8">
     <title>Title</title>
     <link rel="stylesheet" type="text/css" href="style.css" />
+  <link rel="stylesheet" type="text/css" href="lib/font-awesome.css" />
 </head>
 <body>
 <ul class="food-list"></ul>
 <canvas id="map"></canvas>
+<div class="controls ctrl-animation">
+  <button class="play"><i class="fa fa-play"></i></button>
+  <button class="stop"><i class="fa fa-stop"></i></button>
+</div>
+<div class="controls ctrl-evolution">
+  <button class="evolve"><i class="fa fa-arrow-circle-up"></i></button>
+  <button class="interrupt"><i class="fa fa-ban"></i></button>
+</div>
+<div class="controls ctrl-export-import">
+  <button class="export"><i class="fa fa-floppy-o"></i></button>
+  <button class="import">
+    <input type="file">
+    <i class="fa fa-folder-open-o"></i>
+  </button>
+</div>
+<div class="generation-panel"></div>
 <script src="lib/lodash.js"></script>
 <script src="lib/jquery.js"></script>
 <script src="lib/box-muller.js"></script>
@@ -16,6 +33,7 @@
 <script src="genetic-network/fullyConnectedMLP.js"></script>
 <script src="genetic-network/MLP.js"></script>
 <script src="genetic-network/SimpleGeneticAlgorithm.js"></script>
+<script src="genetic-network/RandomSearch.js"></script>
 <script src="navigation/Agent2.js"></script>
 <script src="navigation/Map.js"></script>
 <script src="navigation/RGB.js"></script>

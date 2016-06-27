@@ -6,7 +6,7 @@
         OUTPUT = 3;
 
   var biasedLinks = [
-    [null, null, null, 0, 0, 0, 0, null, null, null],
+    [null, null, null, -1, 0, 0, 0, null, null, null],
     [null, null, null, 1, -1, 0, 0, null, null, null],
     [null, null, null, 0, 0, 1, -1, null, null, null],
     [null, null, null, null, null, null, null, 1, 0, 0],
@@ -31,8 +31,7 @@
     function randomizePopulation() {
       population = [];
       for (let i = 0; i < populationSize; i++) {
-        population.push(new geneticNetwork.MLP(INPUT, HIDDEN, OUTPUT, biasedLinks));
-        //biasedLinks = undefined;
+        population.push(new geneticNetwork.MLP(INPUT, HIDDEN, OUTPUT));
       }
     }
 
@@ -144,6 +143,12 @@
       newPopulation = _.slice(population, 0, Math.floor(KEEP_PARENTS_RATE * populationSize));
       completePopulationWithOffspring(newPopulation);
       population = newPopulation;
+    };
+
+    this.loadPopulation = function (linkMatrices) {
+      population = _.map(linkMatrices, function (linkMatrix) {
+        return new geneticNetwork.MLP(INPUT, HIDDEN, OUTPUT, linkMatrix);
+      });
     };
 
     initialize();
