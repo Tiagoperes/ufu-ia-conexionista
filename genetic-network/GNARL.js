@@ -114,6 +114,27 @@
       return offspring;
     }
 
+    function isHiddenNode(index, linkMatrix) {
+      var isNotInputNode = index > 2,
+          outputNodeFirstIndex = linkMatrix.length - 3,
+          isNotOutputNode = index < outputNodeFirstIndex;
+
+      return isNotInputNode && isNotOutputNode;
+    }
+
+    function getNumberOfHiddenNodesInLinkMatrix(linkMatrix) {
+      var hiddenNodes = [];
+      for (let i = 0; i < linkMatrix.length; i++) {
+        for (let j = 0; j < linkMatrix[i].length; j++) {
+          if (linkMatrix[i][j] !== null) {
+            if (isHiddenNode(i, linkMatrix)) hiddenNodes.push(i);
+            if (isHiddenNode(j, linkMatrix)) hiddenNodes.push(j);
+          }
+        }
+      }
+      return _.uniq(hiddenNodes).length;
+    }
+
     this.nextGeneration = function () {
       var parents, offspring;
 
@@ -131,6 +152,13 @@
 
     this.getPopulation = function () {
       return population;
+    };
+
+    this.loadPopulation = function (linkMatrices) {
+      population = _.map(linkMatrices, function (linkMatrix) {
+        var hidden = getNumberOfHiddenNodesInLinkMatrix(linkMatrix);
+        return new geneticNetwork.NeuralNetwork(hidden, linkMatrix);
+      });
     };
 
     initialize();
